@@ -44,7 +44,6 @@ class Arguments:
 
 def main(self):
     Debug.write("start")
-    # proxy = DomoticzProxy.DomoticzProxy("10.0.0.24:8080", "wouter", "TozkaUk?8LXd}7jj")
     address = os.environ['domoticz_address']
     username = os.environ['domoticz_username']
     password = os.environ['domoticz_password']
