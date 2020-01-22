@@ -1,6 +1,6 @@
 import os
 import sys
-from workflow import Workflow, ICON_ERROR, ICON_INFO
+from workflow import Workflow3, ICON_ERROR, ICON_INFO
 
 import Const
 import Debug
@@ -39,8 +39,7 @@ class Arguments:
 
         if (not result.Show_DomoticzStatus and not result.DeviceIdx and not result.ActionId):
             self.Show_Room = True # fallback to show-room when nothing is asked
-        return result
-
+        return result        
 
 def main(self):
     Debug.write("start")
@@ -71,6 +70,10 @@ def main(self):
                 valid=False,
                 autocomplete=DomoticzHelpers.CreateQuery(device.Room, device, None) + " info"
             )
+
+            if (not args.ExecuteAction):
+                wf.rerun = 1
+
     elif (args.Show_Room):
         room = proxy.getRoom(idxRoom)
         room.toWorkflow(wf)
@@ -82,5 +85,5 @@ def main(self):
     Debug.write("end")
 
 if __name__ == "__main__":
-    wf = Workflow()
+    wf = Workflow3()
     sys.exit(wf.run(main))

@@ -1,6 +1,8 @@
+import sys
 from workflow import notify
 
 import Debug
+sys.path.append('./devices')
 import DomoticzDevice
 import DomoticzHelpers
 
@@ -12,14 +14,16 @@ class DomoticzDeviceAction:
     Subtitle = None
     Action = None
     Notify = None
+    Icon = None
 
-    def __init__(self, id, title, subtitle, action, notify = None, device = None):
+    def __init__(self, title, id="", subtitle = "", action = None, notify = None, device = None, icon = None):
         self.Id = id
         self.Device = device
         self.Title = title
         self.Subtitle = subtitle
         self.Action = action
         self.Notify = notify
+        self.Icon = icon
 
     def notify(self, sucess):
         if (not self.Notify == None):
@@ -34,5 +38,6 @@ class DomoticzDeviceAction:
             title=self.Title,
             subtitle=str(self.Subtitle),
             autocomplete=DomoticzHelpers.CreateQuery(None if self.Device == None else self.Device.Room, self.Device, self),
-            valid=False
+            valid=False,
+            icon=self.Icon
         )        

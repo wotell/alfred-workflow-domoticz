@@ -1,5 +1,6 @@
 import Debug
 import DomoticzDevice
+import DomoticzHelpers
 
 class DomoticzRoom:
     Prefix = "room"
@@ -18,7 +19,7 @@ class DomoticzRoom:
         matchedStatusDevice = None
         for statusDevice in statusDevicesReply['result']:
             if (roomDevice['devidx'] == statusDevice['idx']):
-                return DomoticzDevice.CreateDevice(self, statusDevice)
+                return DomoticzHelpers.CreateDevice(self, statusDevice)
             
     def toWorkflow(self, wf):
         for device in self._devices:

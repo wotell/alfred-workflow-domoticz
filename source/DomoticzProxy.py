@@ -5,6 +5,7 @@ import base64
 import Const
 import Debug
 import DomoticzDevice
+import DomoticzHelpers
 import DomoticzRoom
 import DomoticzStatus
 
@@ -33,7 +34,7 @@ class DomoticzProxy:
     def getDevice(self, deviceIdx):
         url = "{baseurl}{action}".format(baseurl=self._baseUrl, action=Const.DomoticzAction.Device_Status.format(idx=deviceIdx))
         reply = self._get(url)
-        return DomoticzDevice.CreateDevice(None, reply["result"][0])
+        return DomoticzHelpers.CreateDevice(None, reply["result"][0])
 
     def getAction(self, action):
         url = "{baseurl}{action}".format(baseurl=self._baseUrl, action=action)
