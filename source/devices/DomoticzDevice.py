@@ -39,6 +39,10 @@ class DomoticzDevice(object):
     def Actions(self):
         return self._actions
 
+    @property
+    def QuicklookUrl(self):
+        return Const.BASE_WEB_URL + "#/Devices/{idx}/Log".format(idx=self.Idx)
+
     def getAction(self, actionId):
         for action in self.Actions:
             if (action.Id == actionId):
@@ -52,6 +56,7 @@ class DomoticzDevice(object):
             icon=self.Icon,
             valid=False,
             autocomplete=DomoticzHelpers.CreateQuery(self.Room, self, None),
+            quicklookurl=self.QuicklookUrl
         )
 
     def actionsToWorkflow(self, wf):

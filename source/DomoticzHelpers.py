@@ -8,6 +8,7 @@ import DomoticzHelpers
 
 sys.path.append('./devices')
 import DomoticzDevice
+import EnergyDomoticzDevice
 import GasDomoticzDevice
 import ColorLightDomoticzDevice
 import LightDomoticzDevice
@@ -39,6 +40,8 @@ def CreateDevice(room, deviceInfo):
         device = TempDomoticzDevice.TempDomoticzDevice(room, deviceInfo)
     elif (deviceInfo["SubType"] == "Gas"):
         device = GasDomoticzDevice.GasDomoticzDevice(room, deviceInfo)
+    elif (deviceInfo["SubType"] == "Energy"):
+        device = EnergyDomoticzDevice.EnergyDomoticzDevice(room, deviceInfo)
     
     if (device == None):
         device = DomoticzDevice.DomoticzDevice(room, deviceInfo)

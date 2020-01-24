@@ -43,11 +43,10 @@ class Arguments:
 
 def main(self):
     Debug.write("start")
-    address = os.environ['domoticz_address']
     username = os.environ['domoticz_username']
     password = os.environ['domoticz_password']
     idxRoom = os.environ['domoticz_idxRoom']
-    proxy = DomoticzProxy.DomoticzProxy(address, username, password)
+    proxy = DomoticzProxy.DomoticzProxy(username, password)
 
     args = Arguments.Parse(sys.argv)
     if (args.ShowDevice):

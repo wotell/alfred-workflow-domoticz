@@ -4,7 +4,8 @@ WORKFLOW_MODE = True
 if "domoticz_cmdlinemode" in os.environ:
     WORKFLOW_MODE = False
 BASE_WORKFLOW_FOLDER = os.path.dirname(__file__)
-BASE_URL = "http://{serverPort}/json.htm"
+BASE_API_URL = "http://{serverPort}/json.htm".format(serverPort=os.environ['domoticz_address'])
+BASE_WEB_URL = "http://{serverPort}/".format(serverPort=os.environ['domoticz_address'])
 BASE_PATH_ICNS = "{folder}/resources/icns".format(folder=BASE_WORKFLOW_FOLDER)
 
 class DomoticzAction:

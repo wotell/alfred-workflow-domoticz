@@ -46,6 +46,6 @@ class DomoticzProxy:
         request = urllib2.Request(url, headers={"Authorization" : self._authorization})
         return json.loads(urllib2.urlopen(request).read())
 
-    def __init__(self, serverPort, username, password):
-        self._baseUrl = Const.BASE_URL.format(username=username,password=password,serverPort=serverPort)
+    def __init__(self, username, password):
+        self._baseUrl = Const.BASE_API_URL
         self._authorization = "Basic " + base64.b64encode(username + ":" + password)

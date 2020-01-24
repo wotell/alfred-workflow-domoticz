@@ -19,4 +19,3 @@ class VoltageDomoticzDevice(DomoticzDevice.DomoticzDevice):
             device=self,
             icon=self.Icon
         ))
-
